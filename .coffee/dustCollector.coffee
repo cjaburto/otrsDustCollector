@@ -43,7 +43,7 @@ casper.then ->
   
 casper.then ->
   table = 7
-  textRegex = /respuesta automática|]\n\s\s\s\s\s\s\s\s\s\s\s alerta|no se puede entregar|UPS test completed|Undeliverable|estoy ausente|AntiPortonazo/gi
+  textRegex = /respuesta automática|]\n\s\s\s\s\s\s\s\s\s\s\s alerta|no se puede entregar|UPS test completed|Undeliverable|estoy ausente|AntiPortonazo|UPS/gi
   for i in [1..gen.elements]
     text    = @fetchText "table:nth-child(#{table}) tbody td.mainhead:nth-child(2)"
     result  = textRegex.test text
