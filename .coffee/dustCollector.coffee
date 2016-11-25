@@ -17,7 +17,7 @@ gen   = {}
 user  = 'cjaque'
 pass  = 'kkpura'
 
-casper.start "https://10.0.0.25/otrs/index.fpl"
+casper.start "http://10.0.0.22/otrs/index.fpl"
 
 casper.on 'error' , (e)->
 	runtime=time()
@@ -43,7 +43,7 @@ casper.then ->
   
 casper.then ->
   table = 7
-  textRegex = /respuesta automática|]\n\s\s\s\s\s\s\s\s\s\s\s alerta|no se puede entregar|Undeliverable|AntiPortonazo|UPS|Fuera de la oficina|Ausente/gi
+  textRegex = /respuesta automática|]\n\s\s\s\s\s\s\s\s\s\s\s alerta|no se puede entregar|Undeliverable|AntiPortonazo|UPS|Fuera de la oficina|Ausente|Delayed/gi
   for i in [1..gen.elements]
     text    = @fetchText "table:nth-child(#{table}) tbody td.mainhead:nth-child(2)"
     result  = textRegex.test text
